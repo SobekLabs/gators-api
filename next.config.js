@@ -1,5 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  
+  env: {
+    NEXT_PUBLIC_CONTRACT_ADDRESS: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS,
+    NEXT_PUBLIC_NETWORK_RPC: process.env.NEXT_PUBLIC_NETWORK_RPC,
+    NEXT_PUBLIC_CHAIN_ID: process.env.NEXT_PUBLIC_CHAIN_ID,
+    METADATA_URL: process.env.METADATA_URL
+  },
   reactStrictMode: true,
   async headers() {
     return [
