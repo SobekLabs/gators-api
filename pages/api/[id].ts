@@ -51,15 +51,16 @@ export default async function handler(req:any, res:any) {
 
         
     // Check if munk has owner
-    contract
+    await contract
       .ownerOf(id)
       .then(async (resp:any) => {
         // Fetch the munk metadata
-        const jsonBody = await axios.get(tokenId.path);
+        const jsonBody = await axios.get(tokenId.path.replace("ipfs://","https://cloudflare-ipfs.com/ipfs/"));
         res.status(200).json(jsonBody.data);
       })
-      .catch(() => {
+      .catch((err: any) => {
         res.status(404).json({
+          error: err,
           message: "Pixel Gator not found yet",
         });
       });
